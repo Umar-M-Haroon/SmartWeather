@@ -6,6 +6,9 @@ data = json.loads(response.read())
 print url+'\n'+'\n'
 print data["list"][0]
 print data["list"][0]
+print data["list"][0]
+print data["list"][0]
+print data["list"][0]
 
 
 #main.temp_min
