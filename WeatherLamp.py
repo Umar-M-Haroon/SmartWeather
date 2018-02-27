@@ -5,11 +5,11 @@ response = urllib.urlopen(url)
 data = json.loads(response.read())
 print url+'\n'+'\n'
 print data["list"][0]
-# print data["main"]["temp_min"]
-# print data["main"]["temp_max"]
-# print data["clouds"]["all"]
-# print data["main"]["temp"]
-# print data["precipitation"]
+print data["main"]["temp_min"]
+print data["main"]["temp_max"]
+print data["clouds"]["all"]
+print data["main"]["temp"]
+print data["precipitation"]
 
 
 
