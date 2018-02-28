@@ -3,11 +3,24 @@ class Weather:
     temp = 0
     rain = 0 
     cloud = 0
-
     def __init__(self,t,r,c):
         self.temp=t
         self.rain=r
         self.cloud=c
+    def findTotalRain(self,array):
+        total = 0
+        for x in array:
+            total+=x.rain
+        return total
+    def findHighestCloudPercentage(self,array):
+        max = 0
+        for x in array:
+            if (x.cloud > max):
+                max=x.cloud
+        return max
+
+        
+
 class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
@@ -34,7 +47,18 @@ class Data:
 
 
 
+
+
+
 d = Data()
 data = d.getData()
 x = d.filterData(data)
+W = Weather(0,0,0)
+W.cloud=W.findHighestCloudPercentage(x)
+W.rain=W.findTotalRain(x)
+print(W.rain)
+print(W.cloud)
+
+
+
 
