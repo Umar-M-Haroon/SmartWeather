@@ -1,6 +1,6 @@
 import urllib,json
 import time
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 class Weather:
     temp = 0
     rain = 0 
@@ -75,11 +75,20 @@ W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
 print(W.rain)
 print(W.cloud)
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(6,GPIO.OUT)
-GPIO.output(6,GPIO.HIGH)
-while True:
-        GPIO.output(6,GPIO.HIGH)
-        time.sleep(0.5)
-        GPIO.output(6,GPIO.LOW)
-        time.sleep(0.5)
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(6,GPIO.OUT)
+# GPIO.output(6,GPIO.HIGH)
+# while True:
+#         GPIO.output(6,GPIO.HIGH)
+#         time.sleep(0.5)
+#         GPIO.output(6,GPIO.LOW)
+#         time.sleep(0.5)
+# GPIO.setup(12,GPIO.OUT)
+# GPIO.output(12,GPIO.HIGH)
+# while True:
+#         GPIO.output(12,GPIO.HIGH)
+#         time.sleep(0.5)
+#         GPIO.output(12,GPIO.LOW)
+#         time.sleep(0.5)
+# p = GPIO.PWM(25,2)
+# p.start(100)
