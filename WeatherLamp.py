@@ -1,7 +1,9 @@
 import urllib,json
+
 #import RPi.GPIO as GPIO
 import time
 #from  neopixel import *
+
 import sys
 class Weather:
     temp = 0
@@ -22,6 +24,7 @@ class Weather:
             if (x.cloud > max):
                 max=x.cloud
         return max
+
     def makeRain(self,rain):
         roundedRain = round(rain)
         dict = {0:0, 1:25, 2:50, 3:75, 4:100}
@@ -38,9 +41,11 @@ class Weather:
         print('temp', roundedTemp)
 
 
+
 class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
+
         url = url = "http://api.openweathermap.org/data/2.5/forecast?&lat=43.15&lon=-77.62&APPID="+key+"&units=imperial"+"&cnt=4"
         success = False
         while (success==False):
@@ -88,11 +93,13 @@ x = d.filterData(data)
 W = Weather(0,0,0)
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
+
 W.makeRain(W.rain)
 W.makeClout(W.cloud)
 W.makeTemp(W.temp)
 # print(W.rain)
 # print(W.cloud)
+
 
 
 
@@ -105,7 +112,10 @@ LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 25     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor$
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
-#LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
+
+LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
+
+
 
 
 
@@ -124,6 +134,7 @@ def theaterChase(strip, color, wait_ms=50, iterations=10):
                 for q in range(3):
                         for i in range(0, strip.numPixels(), 3):
                                 strip.setPixelColor(i+q, 0)
+
 
 # try:
 #         while True:
