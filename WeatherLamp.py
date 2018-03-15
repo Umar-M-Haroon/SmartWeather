@@ -98,7 +98,7 @@ LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(6,GPIO.OUT)
 GPIO.output(6,GPIO.HIGH)
-ring = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, $
+ring = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP) 
 ring.begin()
 
 def theaterChase(strip, color, wait_ms=50, iterations=10):
