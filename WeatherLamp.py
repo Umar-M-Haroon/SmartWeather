@@ -22,6 +22,19 @@ class Weather:
             if (x.cloud > max):
                 max=x.cloud
         return max
+    def makeRain(self,rain)
+        roundedRain = round(rain)
+        dict = {0:0, 1:25, 2:50, 3:75, 4:100}
+        rainVal = (dict[roundedRain])
+        print(rainVal)
+        # GPIO.PWN(7,rainVal)
+    def makeClout(self,cloud)
+        cloutVal = cloud
+        print(cloutVal)
+        # GPIO.PWN(8,cloutVal)
+    def makeTamp(slef, temp)
+        roundedTemp = round(temp)
+
 
 
 class Data:
