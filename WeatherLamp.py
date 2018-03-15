@@ -1,7 +1,9 @@
 import urllib,json
-import RPi.GPIO as GPIO
+
+#import RPi.GPIO as GPIO
 import time
-from  neopixel import *
+#from  neopixel import *
+
 import sys
 class Weather:
     temp = 0
@@ -23,11 +25,28 @@ class Weather:
                 max=x.cloud
         return max
 
+    def makeRain(self,rain):
+        roundedRain = round(rain)
+        dict = {0:0, 1:25, 2:50, 3:75, 4:100}
+        rainVal = int((dict[roundedRain]))
+        print('rain ', rainVal)
+        # GPIO.PWN(7,rainVal)
+    def makeClout(self,cloud):
+        roundedClout = round(cloud)
+        cloutVal = int(roundedClout)
+        print('cloud', cloutVal)
+        # GPIO.PWN(8,cloutVal)
+    def makeTemp(slef, temp):
+        roundedTemp = int(round(temp))
+        print('temp', roundedTemp)
+
+
 
 class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
-        url = "http://api.openweathermap.org/data/2.5/forecast?&lat=43.15&lon=-$
+
+        url = url = "http://api.openweathermap.org/data/2.5/forecast?&lat=43.15&lon=-77.62&APPID="+key+"&units=imperial"+"&cnt=4"
         success = False
         while (success==False):
             try:
@@ -74,8 +93,13 @@ x = d.filterData(data)
 W = Weather(0,0,0)
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
-print(W.rain)
-print(W.cloud)
+
+W.makeRain(W.rain)
+W.makeClout(W.cloud)
+W.makeTemp(W.temp)
+# print(W.rain)
+# print(W.cloud)
+
 
 
 
@@ -88,6 +112,7 @@ LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 25     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor$
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+
 LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
 
 
@@ -95,11 +120,13 @@ LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
 
 
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(6,GPIO.OUT)
-GPIO.output(6,GPIO.HIGH)
-ring = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP) 
-ring.begin()
+
+
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(6,GPIO.OUT)
+# GPIO.output(6,GPIO.HIGH)
+# ring = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+# ring.begin()
 
 def theaterChase(strip, color, wait_ms=50, iterations=10):
         """Movie theater light style chaser animation."""
@@ -108,16 +135,17 @@ def theaterChase(strip, color, wait_ms=50, iterations=10):
                         for i in range(0, strip.numPixels(), 3):
                                 strip.setPixelColor(i+q, 0)
 
-try:
-        while True:
-                GPIO.output(6,GPIO.HIGH)
-                time.sleep(0.5)
-                GPIO.output(6,GPIO.LOW)
-                time.sleep(0.5)
-                theaterChase(ring, Color(127, 127, 127))  # White theater chase
-                theaterChase(ring, Color(127,   0,   0))  # Red theater chase
-                theaterChase(ring, Color(  0,   0, 127))  # Blue theater chase
-except KeyboardInterrupt:
-        print("INTERRUPT")
-finally:
-        GPIO.cleanup()
+
+# try:
+#         while True:
+#                 # GPIO.output(6,GPIO.HIGH)
+#                 # time.sleep(0.5)
+#                 # GPIO.output(6,GPIO.LOW)
+#                 # time.sleep(0.5)
+#                 theaterChase(ring, Color(127, 127, 127))  # White theater chase
+#                 theaterChase(ring, Color(127,   0,   0))  # Red theater chase
+#                 theaterChase(ring, Color(  0,   0, 127))  # Blue theater chase
+# except KeyboardInterrupt:
+#         print("INTERRUPT")
+# # finally:
+#         # GPIO.cleanup()
