@@ -1,10 +1,11 @@
 import urllib,json
 
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
-#from  neopixel import *
+from  neopixel import *
 
 import sys
+import random
 
 class Board:
 # LED strip configuration:
@@ -28,8 +29,8 @@ class Board:
                 GPIO.setup(i,GPIO.IN)
     def setColor(self,r,g,b,LEDNumbers):
         for i in LEDNumbers:
-            self.ring.setPixelColor(i,r,g,b)
-
+            self.ring.setPixelColor(i,Color(r,g,b))
+            self.ring.show()
 
 class Weather:
     temp = 0
@@ -54,7 +55,14 @@ class Weather:
     def makeLightning(self,rain):
         if rain >= 2:
             b=Board()
-            b.setColor(139,0,139,[3,7,12,15])
+            LEDs = []
+            for _ in range(0,4):
+                LEDs.append(random.randrange(1,16))
+            b.setColor(139,0,139,LEDs)
+            time.sleep(random.random())
+            b.setColor(0,0,0,LEDs)
+            time.sleep(random.random())
+
 
     def makeRain(self,rain):
         roundedRain = round(rain)
@@ -132,7 +140,7 @@ b.setPins(pins)
 
 try:
         while True:
-                W.makeLightning(2) 
+                W.makeLightning(W.rain)
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
