@@ -1,7 +1,9 @@
 import urllib,json
+
 import RPi.GPIO as GPIO
 import time
 from  neopixel import *
+
 import sys
 import random
 
@@ -49,6 +51,7 @@ class Weather:
             if (x.cloud > max):
                 max=x.cloud
         return max
+
     def makeLightning(self,rain):
         if rain >= 2:
             b=Board()
@@ -61,10 +64,30 @@ class Weather:
             time.sleep(random.random())
 
 
+    def makeRain(self,rain):
+        roundedRain = round(rain)
+        dict = {0:0, 1:25, 2:50, 3:75, 4:100}
+        rainVal = int((dict[roundedRain]))
+        print('rain ', rainVal)
+        # GPIO.PWM(7,rainVal)
+    def makeClout(self,cloud):
+        roundedClout = round(cloud)
+        cloutVal = int(roundedClout)
+        print('cloud', cloutVal)
+        # GPIO.PWM(8,cloutVal)
+    def makeTemp(slef, temp):
+        roundedTemp = int(round(temp))
+        print('temp', roundedTemp)
+
+
+
+
 class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
+
         url = "http://api.openweathermap.org/data/2.5/forecast?&lat=43.15&lon=-77.62&APPID="+key+"&units=imperial"+"&cnt=4"
+
         success = False
         while (success==False):
             try:
@@ -102,8 +125,14 @@ x = d.filterData(data)
 W = Weather(0,0,0)
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
-print(W.rain)
-print(W.cloud)
+
+W.makeRain(W.rain)
+W.makeClout(W.cloud)
+W.makeTemp(W.temp)
+# print(W.rain)
+# print(W.cloud)
+
+
 
 b=Board()
 pins = {18:"OUT"}
@@ -111,7 +140,7 @@ b.setPins(pins)
 
 try:
         while True:
-                W.makeLightning(2)
+                W.makeLightning(W.rain)
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
