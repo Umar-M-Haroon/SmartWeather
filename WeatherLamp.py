@@ -142,7 +142,7 @@ b.setPins(pins)
 try:
         while True:
                 W.makeLightning(2)
-                time.sleep(3)
+                time.sleep(random.randrange(1,2))
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
