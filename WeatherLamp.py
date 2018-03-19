@@ -62,7 +62,7 @@ class Weather:
             time.sleep(random.random())
             b.setColor(0,0,0,LEDs)
             time.sleep(random.random())
-            time.sleep(3)
+        time.sleep(3)
 
 
     def makeRain(self,rain):
