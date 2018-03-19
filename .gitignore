@@ -8,6 +8,7 @@ __pycache__/
 # C extensions
 *.so
 CHEGG.py
+RFeeder.py
 # Distribution / packaging
 .Python
 env/

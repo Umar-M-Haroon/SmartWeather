@@ -56,12 +56,13 @@ class Weather:
         if rain >= 2:
             b=Board()
             LEDs = []
-            for _ in range(0,4):
+            for _ in range(0,8):
                 LEDs.append(random.randrange(1,16))
             b.setColor(139,0,139,LEDs)
             time.sleep(random.random())
             b.setColor(0,0,0,LEDs)
             time.sleep(random.random())
+            time.sleep(3)
 
 
     def makeRain(self,rain):
@@ -140,7 +141,7 @@ b.setPins(pins)
 
 try:
         while True:
-                W.makeLightning(W.rain)
+                W.makeLightning(2)
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
