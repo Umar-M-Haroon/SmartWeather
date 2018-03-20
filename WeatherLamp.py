@@ -84,7 +84,7 @@ class Weather:
         ratio = 2*(temp-minimum)/(maximum - minimum)
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
-        green = 255 - b - r
+        green = 255 - blue - red
         b.setColor(red,green,blue,LEDs)
 
 
