@@ -136,7 +136,7 @@ W.rain=W.findTotalRain(x)
 
 W.makeRain(W.rain)
 W.makeClout(W.cloud)
-W.makeTemp(W.temp)
+
 # print(W.rain)
 # print(W.cloud)
 
