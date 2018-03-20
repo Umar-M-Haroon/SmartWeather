@@ -139,7 +139,7 @@ W.makeTemp(W.temp)
 try:
     while True:
         # W.makeLightning(20)
-        W.makeTemp(W.temp+30)
+        W.makeTemp(90)
         print(W.temp)
         time.sleep(random.randint(1,4))
         p = GPIO.PWM(12,0.5)
