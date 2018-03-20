@@ -81,7 +81,7 @@ class Weather:
         LEDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
         minimum = -10
         maximum = 100
-        ratio = 2*(temp-minimum)/(maximum - minimum)
+        ratio = ((temp-minimum)/(maximum - minimum))/2
         print(ratio)
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
