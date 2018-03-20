@@ -147,7 +147,7 @@ W.makeClout(W.cloud)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-W.makeTemp(80.0)
+W.makeTemp(10.0)
 try:
     print("Hello")
         # while True:
