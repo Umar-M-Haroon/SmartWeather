@@ -79,13 +79,13 @@ class Weather:
     def makeTemp(self, temp):
         b=Board()
         LEDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-        minimum = -10
-        maximum = 100
-        ratio = ((temp-minimum)/(maximum - minimum))/2
+        minimum = -10.0
+        maximum = 100.0
+        ratio = ((temp-minimum)/(maximum - minimum))*2
         print(ratio)
-        blue = int(max(0,255*(1-ratio)))
-        red = int(max(0,255*(ratio - 1)))
-        green = 255
+        blue = int(max(0,255.0*(1-ratio)))
+        red = int(max(0,255.0*(ratio - 1.0)))
+        green = 255-red-blue
         print(ratio,red,blue,green)
         b.setColor(red,green,blue,LEDs)
 
@@ -147,7 +147,7 @@ W.makeClout(W.cloud)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-W.makeTemp(80)
+W.makeTemp(80.0)
 try:
     print("Hello")
         # while True:
