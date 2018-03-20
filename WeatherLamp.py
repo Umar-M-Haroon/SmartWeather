@@ -77,6 +77,7 @@ class Weather:
         print('cloud', cloutVal)
         # GPIO.PWM(8,cloutVal)
     def makeTemp(self, temp):
+        b=Board()
         minimum = -10
         maximum = 100
         ratio = 2*(temp-minimum)/(maximum - minimum)
@@ -84,7 +85,7 @@ class Weather:
         r = int(max(0,255*(ratio - 1)))
         g = 255 - b - r
         for i in range(1,16):
-            b.setColor(r,g,b,i)
+            b.setColor(r,g,b,1)
 
 
 
