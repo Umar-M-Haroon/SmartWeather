@@ -78,7 +78,7 @@ class Weather:
         # GPIO.PWM(8,cloutVal)
     def makeTemp(self, temp):
         b=Board()
-        LEDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+        LEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
         minimum = -10.0
         maximum = 100.0
         ratio = ((temp-minimum)/(maximum - minimum))*2
