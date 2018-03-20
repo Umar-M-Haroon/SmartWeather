@@ -149,11 +149,9 @@ pins = {18:"OUT"}
 b.setPins(pins)
 W.makeTemp(10.0)
 try:
-    print("Hello")
-        # while True:
-
-                W.makeLightning(20)
-                time.sleep(random.randint(1,4))
+    while True:
+        W.makeLightning(20)
+        time.sleep(random.randint(1,4))
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
