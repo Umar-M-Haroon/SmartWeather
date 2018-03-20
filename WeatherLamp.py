@@ -144,7 +144,7 @@ W.makeTemp(W.temp)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-
+W.makeTemp(80)
 try:
         while True:
                 W.makeLightning(2)
