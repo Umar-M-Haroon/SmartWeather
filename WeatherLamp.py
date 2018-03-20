@@ -1,9 +1,7 @@
 import urllib,json
-
 import RPi.GPIO as GPIO
 import time
 from  neopixel import *
-
 import sys
 import random
 
@@ -87,10 +85,6 @@ class Weather:
         green = 255-red-blue
         b.setColor(red,green,blue,LEDs)
 
-
-
-
-
 class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
@@ -125,7 +119,6 @@ class Data:
             arr.append(r)
         return arr
 
-
 d = Data()
 data = d.getData()
 while data is "":
@@ -138,11 +131,6 @@ W.rain=W.findTotalRain(x)
 W.makeRain(W.rain)
 W.makeClout(W.cloud)
 
-# print(W.rain)
-# print(W.cloud)
-
-
-
 b=Board()
 pins = {18:"OUT",12:"OUT"}
 b.setPins(pins)
@@ -151,7 +139,7 @@ W.makeTemp(W.temp)
 try:
     while True:
         # W.makeLightning(20)
-        # W.makeTemp(W.temp)
+        W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
         p = GPIO.PWM(12,80000)
         p.start(100)
