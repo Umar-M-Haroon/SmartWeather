@@ -85,6 +85,7 @@ class Weather:
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
         green = 255
+        print(red,blue,green)
         b.setColor(red,green,blue,LEDs)
 
 
