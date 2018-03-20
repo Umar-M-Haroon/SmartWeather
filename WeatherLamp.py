@@ -82,6 +82,7 @@ class Weather:
         minimum = -10
         maximum = 100
         ratio = 2*(temp-minimum)/(maximum - minimum)
+        print(ratio)
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
         green = 255
