@@ -76,9 +76,15 @@ class Weather:
         cloutVal = int(roundedClout)
         print('cloud', cloutVal)
         # GPIO.PWM(8,cloutVal)
-    def makeTemp(slef, temp):
-        roundedTemp = int(round(temp))
-        print('temp', roundedTemp)
+    def makeTemp(self, temp):
+        minimum = -10
+        maximum = 100
+        ratio = 2*(temp-minimum)/(maximum - minimum)
+        b = int(max(0,255*(1-ratio)))
+        r = int(max(0,255*(ratio - 1)))
+        g = 255 - b - r
+        for i in range(1,16):
+            b.setColor(r,g,b,i)
 
 
 
