@@ -7,8 +7,10 @@ __pycache__/
 
 # C extensions
 *.so
+# Unnecessary py files in this folder
 CHEGG.py
 RFeeder.py
+RNG.py
 # Distribution / packaging
 .Python
 env/
