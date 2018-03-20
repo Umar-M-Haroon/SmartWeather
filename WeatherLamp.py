@@ -62,8 +62,8 @@ class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
 
-        url = "http://api.openweathermap.org/data/2.5/forecast?&lat=43.15&lon=-77.62&APPID="+key+"&units=imperial"+"&cnt=4"
-
+        url = "http://api.openweathermap.org/data/2.5/forecast?q=Boulder&APPID="+key+"&units=imperial"+"&cnt=4"
+        print(url)
         success = False
         while (success==False):
             try:
@@ -83,6 +83,7 @@ class Data:
         arr = []
         for x in data["list"]:
             temp = x["main"]["temp"]
+            print
             try:
                 rain = x["rain"]["3h"]
             except:
@@ -98,7 +99,7 @@ data = d.getData()
 while data is "":
     data=d.getData()
 x = d.filterData(data)
-W = Weather(0,0,0)
+W = x[0]
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
 
@@ -110,4 +111,4 @@ W.makeClout(W.cloud)
 
 
 
-W.makeTemp(80.0)
+print(W.temp)
