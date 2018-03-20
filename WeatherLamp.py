@@ -130,7 +130,7 @@ data = d.getData()
 while data is "":
     data=d.getData()
 x = d.filterData(data)
-W = Weather(0,0,0)
+W = x[0]
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
 
