@@ -96,7 +96,7 @@ class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
 
-        url = "http://api.openweathermap.org/data/2.5/forecast?&lat=43.15&lon=-77.62&APPID="+key+"&units=imperial"+"&cnt=4"
+        url = "http://api.openweathermap.org/data/2.5/forecast?q=Boulder&APPID="+key+"&units=imperial"+"&cnt=4"
 
         success = False
         while (success==False):
@@ -147,11 +147,11 @@ W.makeClout(W.cloud)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-W.makeTemp(10.0)
+W.makeTemp(W.temp)
 try:
     while True:
         W.makeLightning(20)
-        W.makeTemp(10.0)
+        W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
 except KeyboardInterrupt:
         print("INTERRUPT")
