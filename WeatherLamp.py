@@ -77,7 +77,7 @@ class Weather:
     def makeTemp(self, temp):
         b=Board()
         LEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
-        minimum = 20.0
+        minimum = 40.0
         maximum = 90.0
         ratio = ((temp-minimum)/(maximum - minimum))*2
         blue = int(max(0,255*(1-ratio)))
@@ -139,8 +139,8 @@ W.makeTemp(W.temp)
 try:
     while True:
         # W.makeLightning(20)
-        W.makeTemp(90)
-        print(W.temp)
+        W.makeTemp(W.temp)
+
         time.sleep(random.randint(1,4))
         p = GPIO.PWM(12,0.5)
         p.start(1)
