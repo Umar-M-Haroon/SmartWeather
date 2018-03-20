@@ -82,11 +82,10 @@ class Weather:
         minimum = -10.0
         maximum = 100.0
         ratio = ((temp-minimum)/(maximum - minimum))*2
-        print(ratio)
         blue = int(max(0,255.0*(1.0-ratio)))
         red = int(max(0,255.0*(ratio - 1.0)))
         green = 255-red-blue
-        print(ratio,red,blue,green)
+
         b.setColor(red,green,blue,LEDs)
 
 
@@ -147,12 +146,12 @@ W.makeClout(W.cloud)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-W.makeTemp(W.temp)
+W.makeTemp(W.temp*2)
 try:
     while True:
-        W.makeLightning(20)
-        W.makeTemp(W.temp)
-        time.sleep(random.randint(1,4))
+        # W.makeLightning(20)
+        W.makeTemp(W.temp*2)
+        # time.sleep(random.randint(1,4))
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
