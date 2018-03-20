@@ -145,12 +145,12 @@ W.makeClout(W.cloud)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-W.makeTemp(W.temp*2)
+W.makeTemp(W.temp)
 print(W.temp)
 try:
     while True:
         W.makeLightning(20)
-        W.makeTemp(W.temp*2)
+        W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
 except KeyboardInterrupt:
         print("INTERRUPT")
