@@ -46,14 +46,17 @@ class Weather:
 
     def makeTemp(self, temp):
 
+        b=Board()
+        LEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
         minimum = 20.0
         maximum = 90.0
         ratio = ((temp-minimum)/(maximum - minimum))*2
-        print(ratio)
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
         green = 255-red-blue
-        print(ratio,red,blue,green)
+        b.setColor(red,green,blue,LEDs)
+
+
 
 
 
@@ -63,7 +66,7 @@ class Data:
         key = "cf22c6d3079412ef13ed81f039297bc8"
 
         url = "http://api.openweathermap.org/data/2.5/forecast?q=Boulder&APPID="+key+"&units=imperial"+"&cnt=4"
-        print(url)
+
         success = False
         while (success==False):
             try:
@@ -112,4 +115,23 @@ W.makeClout(W.cloud)
 
 
 
+
 W.makeTemp(W.temp+30)
+
+b=Board()
+pins = {18:"OUT",12:"OUT"}
+b.setPins(pins)
+
+
+try:
+    while True:
+        # W.makeLightning(20)
+        # W.makeTemp(W.temp)
+        time.sleep(random.randint(1,4))
+        p = GPIO.PWM(12,80000)
+        p.start(100)
+except KeyboardInterrupt:
+        print("INTERRUPT")
+finally:
+        GPIO.cleanup()
+
