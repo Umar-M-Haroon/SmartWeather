@@ -140,6 +140,7 @@ try:
     while True:
         # W.makeLightning(20)
         W.makeTemp(W.temp+30)
+        print(W.temp)
         time.sleep(random.randint(1,4))
         p = GPIO.PWM(12,0.5)
         p.start(1)
