@@ -46,9 +46,9 @@ class Weather:
 
     def makeTemp(self, temp):
 
-        minimum = -10.0
-        maximum = 100.0
-        ratio = ((temp-minimum)/(maximum - minimum))/2
+        minimum = 20.0
+        maximum = 90.0
+        ratio = ((temp-minimum)/(maximum - minimum))*2
         print(ratio)
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
@@ -111,4 +111,5 @@ W.makeClout(W.cloud)
 
 
 
-print(W.temp)
+
+W.makeTemp(W.temp+30)
