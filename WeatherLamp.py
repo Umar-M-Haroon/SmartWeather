@@ -151,6 +151,7 @@ W.makeTemp(10.0)
 try:
     while True:
         W.makeLightning(20)
+        W.makeTemp(10.0)
         time.sleep(random.randint(1,4))
 except KeyboardInterrupt:
         print("INTERRUPT")
