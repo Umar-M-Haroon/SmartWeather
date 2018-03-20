@@ -1,8 +1,8 @@
 import urllib,json
 
-
+import RPi.GPIO as GPIO
 import time
-
+from  neopixel import *
 
 import sys
 import random
