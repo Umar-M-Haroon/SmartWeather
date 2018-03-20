@@ -78,14 +78,14 @@ class Weather:
         # GPIO.PWM(8,cloutVal)
     def makeTemp(self, temp):
         b=Board()
+        LEDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
         minimum = -10
         maximum = 100
         ratio = 2*(temp-minimum)/(maximum - minimum)
         b = int(max(0,255*(1-ratio)))
         r = int(max(0,255*(ratio - 1)))
         g = 255 - b - r
-        for i in range(1,16):
-            b.setColor(r,g,b,1)
+        b.setColor(r,g,b,LEDs)
 
 
 
