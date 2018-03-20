@@ -85,7 +85,6 @@ class Weather:
         blue = int(max(0,255.0*(1.0-ratio)))
         red = int(max(0,255.0*(ratio - 1.0)))
         green = 255-red-blue
-
         b.setColor(red,green,blue,LEDs)
 
 
@@ -149,7 +148,7 @@ b.setPins(pins)
 W.makeTemp(W.temp*2)
 try:
     while True:
-        # W.makeLightning(20)
+        W.makeLightning(20)
         W.makeTemp(W.temp*2)
         # time.sleep(random.randint(1,4))
 except KeyboardInterrupt:
