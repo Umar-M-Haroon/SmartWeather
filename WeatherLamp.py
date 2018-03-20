@@ -141,8 +141,8 @@ try:
         # W.makeLightning(20)
         W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
-        p = GPIO.PWM(12,80000)
-        p.start(100)
+        p = GPIO.PWM(12,0.5)
+        p.start(1)
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
