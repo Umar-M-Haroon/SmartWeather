@@ -144,7 +144,7 @@ W.makeClout(W.cloud)
 
 
 b=Board()
-pins = {18:"OUT",13:"OUT"}
+pins = {18:"OUT",12:"OUT"}
 b.setPins(pins)
 W.makeTemp(W.temp)
 
@@ -153,8 +153,8 @@ try:
         # W.makeLightning(20)
         # W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
-        p =GPIO.PWM(13,200)
-        p.start(50)
+        p = GPIO.PWM(12,200)
+        p.start(100)
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
