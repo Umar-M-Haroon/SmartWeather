@@ -73,7 +73,8 @@ class Weather:
                 except:
                     continue
             try:
-                c = b.getColor(allLEDs)
+                for i in allLEDs:
+                    c.append(b.getColor(allLEDs[i]))
             except:
                 c = [0]
             allLEDs = [i for i in range(16)]
