@@ -133,12 +133,12 @@ W.rain=W.findTotalRain(x)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
-W.makeTemp(W.temp)
+# W.makeTemp(W.temp)
 
 try:
     while True:
         # W.makeLightning(20)
-        W.makeTemp(W.temp)
+        # W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
 
 except KeyboardInterrupt:
