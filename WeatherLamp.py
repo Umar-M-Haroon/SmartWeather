@@ -59,6 +59,7 @@ class Weather:
 
             for _ in range(0,8):
                 i = random.randrange(1,16)
+                print(i)
                 LightningLEDs.append(i)
                 allLEDs.remove(i)
             c = b.ring.getPixelColor(allLEDs)
