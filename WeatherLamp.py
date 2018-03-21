@@ -133,6 +133,7 @@ W.rain=W.findTotalRain(x)
 b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
+print(W.temp)
 # W.makeTemp(W.temp)
 
 try:
