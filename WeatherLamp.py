@@ -65,6 +65,7 @@ class Weather:
                 except:
                     continue
             c = b.ring.getPixelColor(allLEDs[0])
+            print(c)
             allLEDs = [i for i in range(16)]
             b.setColor(139,0,139,LightningLEDs)
             time.sleep(random.random())
