@@ -164,6 +164,7 @@ b.setPins(pins)
 
 
 try:
+    W.makeTemp(40)
     while True:
         W.makeTemp(40)
         time.sleep(1)
