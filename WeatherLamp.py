@@ -61,7 +61,10 @@ class Weather:
                 i = random.randrange(1,16)
                 print(i)
                 LightningLEDs.append(i)
-                allLEDs.remove(i)
+                try:
+                    allLEDs.remove(i)
+                except:
+                    print(i)
             c = b.ring.getPixelColor(allLEDs)
             allLEDs = [i for i in range(16)]
             b.setColor(139,0,139,LightningLEDs)
