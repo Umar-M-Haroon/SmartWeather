@@ -31,9 +31,10 @@ class Board:
             self.ring.setPixelColor(i,Color(r,g,b))
             self.ring.show()
     def getColor(self,LEDNumbers):
-        c
+        c = []
         for i in LEDNumbers:
             c.append(LEDNumbers[i])
+            print(c[i])
         return c
     def setColor24(self,c,LEDNumbers):
         for i in LEDNumbers:
