@@ -30,6 +30,15 @@ class Board:
         for i in LEDNumbers:
             self.ring.setPixelColor(i,Color(r,g,b))
             self.ring.show()
+    def getColor(self,LEDNumbers):
+        c = []
+        for i in LEDNumbers:
+            c.append(LEDNumbers[i])
+        return c
+    def setColor24(self,c,LEDNumbers):
+        for i in LEDNumbers:
+            self.ring.setPixelColor(i,c)
+            self.ring.show()
 
 class Weather:
     temp = 0
@@ -64,12 +73,11 @@ class Weather:
                     allLEDs.remove(i)
                 except:
                     continue
-            c = b.ring.getPixelColor(allLEDs[0])
-            print(c)
+            c = b.getColor(allLEDs)
             allLEDs = [i for i in range(16)]
             b.setColor(139,0,139,LightningLEDs)
             time.sleep(random.random())
-            b.ring.setPixelColor(allLEDs,c)
+            b.setColor24(c,allLEDs)
             time.sleep(random.random())
 
 
@@ -161,7 +169,7 @@ try:
         time.sleep(1)
 
 except KeyboardInterrupt:
-        print("INTERRUPT")
+        continue
 finally:
         GPIO.cleanup()
 GPIO.cleanup()
