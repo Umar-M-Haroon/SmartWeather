@@ -77,6 +77,7 @@ class Weather:
                     print(b.getColor(allLEDs[i]))
                     c.append(b.getColor(allLEDs[i]))
             except:
+                print("Exception")
                 c = [0]
             allLEDs = [i for i in range(16)]
             b.setColor(139,0,139,LightningLEDs)
@@ -164,9 +165,8 @@ b.setPins(pins)
 
 
 try:
-    W.makeTemp(40)
     while True:
-
+        W.makeTemp(40)
         time.sleep(1)
         W.makeLightning(20)
 except KeyboardInterrupt:
