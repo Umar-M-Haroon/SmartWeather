@@ -146,6 +146,7 @@ try:
         for i in range(40,89):
             W.makeTemp(i)
             i=i+1
+            time.sleep(0.5)
         time.sleep(1)
 
 except KeyboardInterrupt:
