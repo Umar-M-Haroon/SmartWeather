@@ -34,8 +34,6 @@ class Board:
         c = []
         for i in LEDNumbers:
             print(self.ring.getPixelColor(LEDNumbers[i]))
-
-        return c
     def setColor24(self,c,LEDNumbers):
         for i in LEDNumbers:
             self.ring.setPixelColor(i,c)
@@ -78,7 +76,7 @@ class Weather:
             allLEDs = [i for i in range(16)]
             b.setColor(139,0,139,LightningLEDs)
             time.sleep(random.random())
-            b.setColor24(c,allLEDs)
+            b.setColor24(c[0],allLEDs)
             time.sleep(random.random())
 
 
