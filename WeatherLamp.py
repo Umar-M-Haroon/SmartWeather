@@ -162,13 +162,12 @@ b.setPins(pins)
 
 try:
     while True:
-        W.makeLightning(20)
         for i in range(40,89):
             W.makeTemp(i)
             i=i+1
             time.sleep(0.5)
         time.sleep(1)
-
+        W.makeLightning(20)
 except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:
