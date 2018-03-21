@@ -76,7 +76,7 @@ class Weather:
         # GPIO.PWM(8,cloutVal)
     def makeTemp(self, temp):
         b=Board()
-        LEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+        LEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
         minimum = 40.0
         maximum = 90.0
         ratio = ((temp-minimum)/(maximum - minimum))*2
@@ -132,7 +132,7 @@ W.makeRain(W.rain)
 W.makeClout(W.cloud)
 
 b=Board()
-pins = {18:"OUT",12:"OUT"}
+pins = {18:"OUT"}
 b.setPins(pins)
 W.makeTemp(W.temp)
 
@@ -142,8 +142,7 @@ try:
         W.makeTemp(W.temp)
 
         time.sleep(random.randint(1,4))
-        p = GPIO.PWM(12,0.5)
-        p.start(1)
+
 except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
