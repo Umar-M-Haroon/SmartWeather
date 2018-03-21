@@ -162,10 +162,7 @@ b.setPins(pins)
 
 try:
     while True:
-        for i in range(40,89):
-            W.makeTemp(i)
-            i=i+1
-            time.sleep(0.5)
+        W.makeTemp(40)
         time.sleep(1)
         W.makeLightning(20)
 except KeyboardInterrupt:
