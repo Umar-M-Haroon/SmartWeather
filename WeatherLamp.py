@@ -128,8 +128,7 @@ W = x[0]
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
 
-W.makeRain(W.rain)
-W.makeClout(W.cloud)
+
 
 b=Board()
 pins = {18:"OUT"}
