@@ -74,6 +74,7 @@ class Weather:
                     continue
             try:
                 for i in allLEDs:
+                    print(b.getColor(allLEDs[i]))
                     c.append(b.getColor(allLEDs[i]))
             except:
                 c = [0]
