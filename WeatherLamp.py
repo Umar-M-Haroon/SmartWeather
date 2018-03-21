@@ -34,7 +34,7 @@ class Board:
         c = []
         for i in LEDNumbers:
             c.append(LEDNumbers[i])
-            print(c[i])
+            print(i)
         return c
     def setColor24(self,c,LEDNumbers):
         for i in LEDNumbers:
