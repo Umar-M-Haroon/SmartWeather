@@ -145,6 +145,7 @@ try:
         # W.makeLightning(20)
         for i in range(40,90):
             W.makeTemp(i)
+            i=i+1
 
 
 except KeyboardInterrupt:
