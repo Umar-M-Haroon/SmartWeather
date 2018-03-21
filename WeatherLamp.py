@@ -72,7 +72,10 @@ class Weather:
                     allLEDs.remove(i)
                 except:
                     continue
-            c = b.getColor(allLEDs)
+            try:
+                c = b.getColor(allLEDs)
+            except:
+                c = [0]
             allLEDs = [i for i in range(16)]
             b.setColor(139,0,139,LightningLEDs)
             time.sleep(random.random())
