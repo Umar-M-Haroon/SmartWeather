@@ -75,6 +75,10 @@ class Weather:
         print('cloud', cloutVal)
         # GPIO.PWM(8,cloutVal)
     def makeTemp(self, temp):
+        if temp < minimum:
+            temp=minimum
+        if temp > maximum:
+            temp=maximum
         b=Board()
         LEDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
         minimum = 40.0
@@ -134,12 +138,12 @@ b=Board()
 pins = {18:"OUT"}
 b.setPins(pins)
 print(W.temp)
-# W.makeTemp(W.temp)
+W.makeTemp(W.temp)
 
 try:
     while True:
         # W.makeLightning(20)
-        # W.makeTemp(W.temp)
+        W.makeTemp(W.temp)
         time.sleep(random.randint(1,4))
 
 except KeyboardInterrupt:
