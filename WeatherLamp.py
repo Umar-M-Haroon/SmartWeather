@@ -54,12 +54,18 @@ class Weather:
     def makeLightning(self,rain):
         if rain >= 2:
             b=Board()
-            LEDs = []
+            LightningLEDs = []
+            allLEDs = [i for i in range(16)]
+
             for _ in range(0,8):
-                LEDs.append(random.randrange(1,16))
-            b.setColor(139,0,139,LEDs)
+                i = random.randrange(1,16)
+                LightningLEDs.append(i)
+                allLEDs.remove(i)
+            c = b.ring.getPixelColor(allLEDs)
+            allLEDs = [i for i in range(16)]
+            b.setColor(139,0,139,LightningLEDs)
             time.sleep(random.random())
-            b.setColor(0,0,0,LEDs)
+            b.ring.setPixelColor(allLEDs,c)
             time.sleep(random.random())
 
 
@@ -77,7 +83,7 @@ class Weather:
         # GPIO.PWM(8,cloutVal)
     def makeTemp(self, temp):
         b=Board()
-        LEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        LightningLEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
         minimum = 40.0
         maximum = 90.0
         if temp < minimum:
@@ -88,7 +94,7 @@ class Weather:
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
         green = 255-red-blue
-        b.setColor(red,green,blue,LEDs)
+        b.setColor(red,green,blue,LightningLEDs)
 
 class Data:
     def getData(self):
@@ -154,3 +160,4 @@ except KeyboardInterrupt:
         print("INTERRUPT")
 finally:
         GPIO.cleanup()
+GPIO.cleanup()
