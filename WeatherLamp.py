@@ -169,7 +169,7 @@ try:
         time.sleep(1)
 
 except KeyboardInterrupt:
-        continue
+    print("INTERRUPTED")
 finally:
         GPIO.cleanup()
 GPIO.cleanup()
