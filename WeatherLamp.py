@@ -68,6 +68,7 @@ class Weather:
             b.setColor(tR,tG,tB,allLEDs)
             time.sleep(1)
             b.setColor(139,0,139,LightningLEDs)
+            b.setColor(tR,tG,tB,allLEDs)
             time.sleep(1)
 
 
