@@ -30,19 +30,7 @@ class Board:
         for i in LEDNumbers:
             self.ring.setPixelColor(i,Color(r,g,b))
             self.ring.show()
-    def getColor(self,LEDNumbers):
-        self.ring.getPixels()
-        c = []
-        for i in LEDNumbers:
-            print(i)
-            print(self.ring.getPixelColor(LEDNumbers[i]))
-            c.append(self.ring.getPixelColor(LEDNumbers[i]))
-        print(c)
-        return c
-    def setColor24(self,c,LEDNumbers):
-        for i in LEDNumbers:
-            self.ring.setPixelColor(i,c)
-            self.ring.show()
+
 
 class Weather:
     temp = 0
@@ -64,7 +52,7 @@ class Weather:
                 max=x.cloud
         return max
 
-    def makeLightning(self,rain):
+    def makeLightning(self,rain,tR,tG,tB):
         if rain >= 2:
             b=Board()
             LightningLEDs = []
@@ -78,12 +66,9 @@ class Weather:
                 except:
                     continue
 
-            color = b.getColor(allLEDs)
-            print(color)
-
             b.setColor(139,0,139,LightningLEDs)
             time.sleep(1)
-            b.setColor24(color,allLEDs)
+            b.setColor(tR,tG,tB,LightningLEDs)
             time.sleep(1)
 
 
@@ -113,6 +98,7 @@ class Weather:
         red = int(max(0,255*(ratio - 1)))
         green = 255-red-blue
         b.setColor(red,green,blue,LightningLEDs)
+        return [red,green,blue]
 
 class Data:
     def getData(self):
@@ -167,9 +153,9 @@ b.setPins(pins)
 
 try:
     while True:
-        W.makeTemp(40)
+        c = W.makeTemp(40)
         time.sleep(1)
-        W.makeLightning(20)
+        W.makeLightning(20,c[0],c[1],c[2])
 except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:
