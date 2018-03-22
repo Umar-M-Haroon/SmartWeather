@@ -151,7 +151,7 @@ b.setPins(pins)
 
 
 try:
-    c = W.makeTemp(90)
+    c = W.makeTemp(40)
 
     while True:
         # W.makeTemp(90)
