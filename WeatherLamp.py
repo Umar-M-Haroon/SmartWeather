@@ -65,7 +65,7 @@ class Weather:
                     allLEDs.remove(i)
                 except:
                     continue
-
+            print("I should be going")
             b.setColor(139,0,139,LightningLEDs)
             time.sleep(1)
             b.setColor(tR,tG,tB,LightningLEDs)
@@ -154,6 +154,7 @@ b.setPins(pins)
 try:
     while True:
         c = W.makeTemp(40)
+        print(c)
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
 except KeyboardInterrupt:
