@@ -153,7 +153,7 @@ b.setPins(pins)
 
 try:
     while True:
-        c = W.makeTemp(40)
+        W.makeTemp(40)
         # print(c)
         # time.sleep(1)
         # W.makeLightning(20,c[0],c[1],c[2])
