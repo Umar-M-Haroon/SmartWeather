@@ -98,7 +98,7 @@ class Weather:
         red = int(max(0,255*(ratio - 1)))
         green = 255-red-blue
         b.setColor(red,green,blue,LightningLEDs)
-        # return [red,green,blue]
+        return [red,green,blue]
 
 class Data:
     def getData(self):
@@ -152,13 +152,13 @@ b.setPins(pins)
 
 
 try:
-    W.makeTemp(90)
+    c = W.makeTemp(90)
 
     while True:
         # W.makeTemp(90)
         # print(c)
         time.sleep(1)
-        # W.makeLightning(20,c[0],c[1],c[2])
+        W.makeLightning(20,c[0],c[1],c[2])
 except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:
