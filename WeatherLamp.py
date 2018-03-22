@@ -66,9 +66,8 @@ class Weather:
                 except:
                     continue
             print("I should be going")
-            b.setColor(139,0,139,LightningLEDs)
-            time.sleep(1)
             b.setColor(tR,tG,tB,allLEDs)
+            b.setColor(139,0,139,LightningLEDs)
             time.sleep(1)
 
 
