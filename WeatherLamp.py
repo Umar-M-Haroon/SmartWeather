@@ -34,6 +34,7 @@ class Board:
         self.ring.getPixels()
         c = []
         for i in LEDNumbers:
+            print(i)
             print(self.ring.getPixelColor(LEDNumbers[i]))
             c.append(self.ring.getPixelColor(LEDNumbers[i]))
         print(c)
