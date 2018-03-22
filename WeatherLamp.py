@@ -159,6 +159,7 @@ try:
         # print(c)
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
+        time.sleep(random.random())
 except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:
