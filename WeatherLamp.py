@@ -31,8 +31,10 @@ class Board:
             self.ring.setPixelColor(i,Color(r,g,b))
             self.ring.show()
     def getColor(self,LEDNumbers):
+        self.ring.getPixels()
         c = []
         for i in LEDNumbers:
+            print(self.ring.getPixelColor(LEDNumbers[i]))
             c.append(self.ring.getPixelColor(LEDNumbers[i]))
         print(c)
         return c
@@ -74,7 +76,7 @@ class Weather:
                     allLEDs.remove(i)
                 except:
                     continue
-            print(allLEDs)
+
             color = b.getColor(allLEDs)
             print(color)
 
