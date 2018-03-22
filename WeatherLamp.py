@@ -98,7 +98,7 @@ class Weather:
         red = int(max(0,255*(ratio - 1)))
         green = 255-red-blue
         b.setColor(red,green,blue,LightningLEDs)
-        return [red,green,blue]
+        # return [red,green,blue]
 
 class Data:
     def getData(self):
