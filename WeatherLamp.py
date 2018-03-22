@@ -74,16 +74,14 @@ class Weather:
                     allLEDs.remove(i)
                 except:
                     continue
-            try:
-                c = b.getColor(allLEDs)
-            except:
-                print("Exception")
-                c = [0]
-            allLEDs = [i for i in range(16)]
+            print(allLEDs)
+            color = b.getColor(allLEDs)
+            print(color)
+
             b.setColor(139,0,139,LightningLEDs)
-            time.sleep(random.random())
-            b.setColor24(c[0],allLEDs)
-            time.sleep(random.random())
+            time.sleep(1)
+            b.setColor24(color,allLEDs)
+            time.sleep(1)
 
 
 
