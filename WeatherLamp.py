@@ -15,17 +15,20 @@ class Board:
     LED_INVERT     = False   # True to invert the signal (when using NPN transistor$
     LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
     LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
-    ring = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP) 
+    ring = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+    #initialize ring and board when the board class is initialized 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         self.ring.begin()
         self.ring.show()
+    #Setup pins and check whether they need to be output or input
     def setPins(self,pins):
         for i in pins:
             if pins[i] is "OUT":
                 GPIO.setup(i,GPIO.OUT)
             else:
                 GPIO.setup(i,GPIO.IN)
+    #Set the ring color by RGB and for what LED's in the ring
     def setColor(self,r,g,b,LEDNumbers):
         for i in LEDNumbers:
             self.ring.setPixelColor(i,Color(r,g,b))
@@ -36,28 +39,33 @@ class Weather:
     temp = 0
     rain = 0
     cloud = 0
+    #Initialize and set values
     def __init__(self,t,r,c):
         self.temp=t
         self.rain=r
         self.cloud=c
+    #Find the toal inches of rain
     def findTotalRain(self,array):
         total = 0
         for x in array:
             total+=x.rain
         return total
+    #Finds the highest cloud percentage in the data
     def findHighestCloudPercentage(self,array):
         max = 0
         for x in array:
             if (x.cloud > max):
                 max=x.cloud
         return max
-
+    
     def makeLightning(self,rain,tR,tG,tB):
+        #only make lightning for if the rain is heavy
         if rain >= 2:
+            #Setup board and get all 16 LEDs
             b=Board()
             LightningLEDs = []
             allLEDs = [i for i in range(16)]
-
+            #Find 8 LED's to make puple for lightning and make the other 8 the temperature
             for _ in range(0,8):
                 i = random.randrange(1,16)
                 LightningLEDs.append(i)
@@ -70,27 +78,32 @@ class Weather:
             time.sleep(1)
 
 
-
+    #Round the rain value so we can map it to the amount of power going through the pump, therefore limiting rain made
     def makeRain(self,rain):
         roundedRain = round(rain)
         dict = {0:0, 1:25, 2:50, 3:75, 4:100}
         rainVal = int((dict[roundedRain]))
         print('rain ', rainVal)
         # GPIO.PWM(7,rainVal)
+    #Same as makeRain but with cloud percentage
     def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
         print('cloud', cloutVal)
         # GPIO.PWM(8,cloutVal)
+
     def makeTemp(self, temp):
+        #initialize board and setup LED array and max/min
         b=Board()
         LightningLEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
         minimum = 40.0
         maximum = 90.0
+        #edge case
         if temp < minimum:
             temp=minimum
         if temp > maximum:
             temp=maximum
+        #algorithm to map red blue green. Once set, set color
         ratio = ((temp-minimum)/(maximum - minimum))*2
         blue = int(max(0,255*(1-ratio)))
         red = int(max(0,255*(ratio - 1)))
@@ -103,8 +116,8 @@ class Weather:
             print(i)
 class Data:
     def getData(self):
+        #always run until it opens (This is to check its connected to the internet)
         key = "cf22c6d3079412ef13ed81f039297bc8"
-
         url = "http://api.openweathermap.org/data/2.5/forecast?q=Boulder&APPID="+key+"&units=imperial"+"&cnt=4"
 
         success = False
@@ -124,6 +137,7 @@ class Data:
 
     def filterData(self,d):
         arr = []
+        #Filter out unnecessary data like coordinates
         for x in data["list"]:
             temp = x["main"]["temp"]
             try:
@@ -158,6 +172,7 @@ try:
     while True:
         # W.makeTemp(90)
         # print(c)
+        #make lightning at different intervals with different levels
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
         time.sleep(random.random())
@@ -165,4 +180,3 @@ except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:
         GPIO.cleanup()
-GPIO.cleanup()
