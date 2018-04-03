@@ -97,7 +97,10 @@ class Weather:
         green = 255-red-blue
         b.setColor(red,green,blue,LightningLEDs)
         return [red,green,blue]
+    def moveToNextWeather(self,r,t,c):
 
+        for i in range(self.cloud,c):
+            print(i)
 class Data:
     def getData(self):
         key = "cf22c6d3079412ef13ed81f039297bc8"
