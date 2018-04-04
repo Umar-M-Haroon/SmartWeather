@@ -148,7 +148,7 @@ class Data:
             r = Weather(temp,rain,cloud)
             arr.append(r)
         return arr
-
+#data request and initialize Weather data
 d = Data()
 data = d.getData()
 while data is "":
