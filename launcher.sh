@@ -6,7 +6,6 @@ cd SmartWeather
 #and sets the current directory to /
 sudo git pull
 sudo python WeatherLamp.py
-cd /
 
 
 
