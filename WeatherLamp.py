@@ -33,6 +33,10 @@ class Board:
         for i in LEDNumbers:
             self.ring.setPixelColor(i,Color(r,g,b))
             self.ring.show()
+    def performPWM(self,pin,freq,DC):
+        p = GPIO.PWM(pin,freq)
+        p.stop()
+        p.start(DC)
 
 
 class Weather:
@@ -65,7 +69,7 @@ class Weather:
             b=Board()
             LightningLEDs = []
             allLEDs = [i for i in range(16)]
-            #Find 8 LED's to make puple for lightning and make the other 8 the temperature
+            #Find 8 LED's to make purple for lightning and make the other 8 the temperature
             for _ in range(0,8):
                 i = random.randrange(1,16)
                 LightningLEDs.append(i)
@@ -83,14 +87,17 @@ class Weather:
         roundedRain = round(rain)
         dict = {0:0, 1:25, 2:50, 3:75, 4:100}
         rainVal = int((dict[roundedRain]))
-        print('rain ', rainVal)
+        p = GPIO.PWM(pin,60)
+        p.stop()
+        p.start(50)
         # GPIO.PWM(7,rainVal)
     #Same as makeRain but with cloud percentage
     def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
-        print('cloud', cloutVal)
-        # GPIO.PWM(8,cloutVal)
+        p = GPIO.PWM(pin,60)
+        p.stop()
+        p.start(50)
 
     def makeTemp(self, temp):
         #initialize board and setup LED array and max/min
@@ -149,6 +156,7 @@ d = Data()
 data = d.getData()
 while data is "":
     data=d.getData()
+#initialize Weather class after filtering data so we can use weather functions
 x = d.filterData(data)
 W = x[0]
 W.cloud=W.findHighestCloudPercentage(x)
@@ -157,22 +165,30 @@ W.rain=W.findTotalRain(x)
 
 
 b=Board()
-pins = {18:"OUT"}
+pins = {18:"OUT",2:"INPUT",12:"OUTPUT",24:"OUTPUT"}
 b.setPins(pins)
 
+while true:
+    buttonData = GPIO.input(2)
+    buttonEnabled = False
+    while buttonData:
+        if buttonEnabled:
+            buttonEnabled = False
+        else:
+            buttonEnabled = True
+        time.sleep(2)
+    if buttonEnabled:
+        try:
+            c = W.makeTemp(40)
 
-
-try:
-    c = W.makeTemp(40)
-
-    while True:
-        # W.makeTemp(90)
-        # print(c)
-        #make lightning at different intervals with different levels
-        time.sleep(1)
-        W.makeLightning(20,c[0],c[1],c[2])
-        time.sleep(random.random())
-except KeyboardInterrupt:
-    print("INTERRUPTED")
-finally:
-        GPIO.cleanup()
+            while True:
+                # W.makeTemp(90)
+                # print(c)
+                #make lightning at different intervals with different levels
+                time.sleep(1)
+                W.makeLightning(20,c[0],c[1],c[2])
+                time.sleep(random.random())
+        except KeyboardInterrupt:
+            print("INTERRUPTED")
+        finally:
+                GPIO.cleanup()
