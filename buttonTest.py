@@ -12,5 +12,6 @@ GPIO.setup(12,GPIO.OUT)
 #     if x:
 #         print("HELLO")
 #         x = false
-while true:
+
+while True:
     GPIO.output(12,GPIO.HIGH)
