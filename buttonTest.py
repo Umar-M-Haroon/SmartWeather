@@ -7,8 +7,9 @@ import random
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(12,GPIO.OUT)
 
-while true:
-    x = GPIO.input(12)
-    if x:
-        print("HELLO")
-        x = false
+# while true:
+#     x = GPIO.input(12)
+#     if x:
+#         print("HELLO")
+#         x = false
+GPIO.output(12,GPIO.HIGH)
