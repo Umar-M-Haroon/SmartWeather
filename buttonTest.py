@@ -5,7 +5,7 @@ import random
 
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(12,GPIO.OUT)
+GPIO.setup(4,GPIO.OUT)
 
 # while true:
 #     x = GPIO.input(12)
