@@ -14,7 +14,7 @@ GPIO.setup(4,GPIO.OUT)
 #         x = false
 
 while True:
-    GPIO.output(12,GPIO.HIGH)
+    GPIO.output(4,GPIO.HIGH)
     time.sleep(1)
-    GPIO.output(12,GPIO.LOW)
+    GPIO.output(4,GPIO.LOW)
     time.sleep(1)
