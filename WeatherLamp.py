@@ -24,7 +24,7 @@ class Board:
     #Setup pins and check whether they need to be output or input
     def setPins(self,pins):
         for i in pins:
-            if pins[i] is "OUT":
+            if pins[i] is "OUT" or pins[i] is "OUTPUT":
                 GPIO.setup(i,GPIO.OUT)
             else:
                 GPIO.setup(i,GPIO.IN)
@@ -86,7 +86,7 @@ class Weather:
 
         for x in range (0,300):
             GPIO.output(4,GPIO.HIGH)
-            time.sleep(number/25/3)
+            time.sleep(number/25/3+.2)
             GPIO.output(4,GPIO.LOW)
             time.sleep(1)
 
@@ -184,10 +184,8 @@ try:
     c = W.makeTemp(40)
 
     while True:
-    # W.makeTemp(90)
-    # print(c)
-    #make lightning at different intervals with different levels
-        W.makeRain(4)
+        W.makeRain(1)
+        
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
         time.sleep(random.random())
