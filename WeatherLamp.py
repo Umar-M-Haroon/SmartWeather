@@ -4,7 +4,7 @@ import time
 from  neopixel import *
 import sys
 import random
-from multiprocessing import Processing
+from multiprocessing import Process
 
 class Board:
 # LED strip configuration:
