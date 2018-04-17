@@ -94,6 +94,7 @@ class Weather:
     def makeRain(self,rain):
         roundedRain = round(rain)
         dict = {0:0, 1:25, 2:50, 3:75, 4:100}
+        print(dict[int(roundedRain)])
         rainVal = int((dict[roundedRain]))
         pumpHumidifierLevels(rainVal)
     #Same as makeRain but with cloud percentage
