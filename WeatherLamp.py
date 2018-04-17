@@ -187,7 +187,7 @@ def mainLoop():
         time.sleep(1)
 def secondLoop(c):
     while True:
-        W.makeLightning(20,c[0],c[1],c[2])
+        W.makeLightning(4,c[0],c[1],c[2])
         time.sleep(random.random())
 if __name__ == '__main__':
     try:
