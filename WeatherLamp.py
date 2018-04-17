@@ -170,7 +170,7 @@ b=Board()
 pins = {18:"OUT",2:"INPUT",12:"OUTPUT",24:"OUTPUT"}
 b.setPins(pins)
 
-while true:
+while True:
     buttonData = GPIO.input(2)
     buttonEnabled = False
     while buttonData:
