@@ -168,7 +168,7 @@ W.rain=W.findTotalRain(x)
 
 
 b=Board()
-pins = {18:"OUT",2:"INPUT",12:"OUT",24:"OUT"}
+pins = {18:"OUT",2:"INPUT",4:"OUT",24:"OUT"}
 b.setPins(pins)
 
 # while True:
