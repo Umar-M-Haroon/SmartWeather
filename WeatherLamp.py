@@ -4,6 +4,7 @@ import time
 from  neopixel import *
 import sys
 import random
+from multiprocessing import Processing
 
 class Board:
 # LED strip configuration:
@@ -180,15 +181,15 @@ b.setPins(pins)
 #             buttonEnabled = True
 #         time.sleep(2)
 #     if buttonEnabled:
-try:
-    c = W.makeTemp(40)
-
+def mainLoop():
     while True:
         W.makeRain(4)
-        
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
         time.sleep(random.random())
+try:
+    t = W.makeTemp(40)
+    Process(target=mainLoop).start()
 except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:

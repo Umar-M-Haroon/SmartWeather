@@ -1,6 +1,6 @@
 {
     "git.ignoreLimitWarning": true,
-    "python.pythonPath": "/usr/local/bin/python3",
+    "python.pythonPath": "/usr/local/bin/python2",
     "files.autoSave": "onWindowChange",
     "editor.cursorStyle": "line-thin",
     "zenMode.centerLayout": false
