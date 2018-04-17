@@ -33,10 +33,6 @@ class Board:
         for i in LEDNumbers:
             self.ring.setPixelColor(i,Color(r,g,b))
             self.ring.show()
-    def performPWM(self,pin,freq,DC):
-        p = GPIO.PWM(pin,freq)
-        p.stop()
-        p.start(DC)
 
 
 class Weather:
@@ -193,7 +189,7 @@ try:
     # W.makeTemp(90)
     # print(c)
     #make lightning at different intervals with different levels
-        W.makeRain(4)
+        W.makeRain(1)
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
         time.sleep(random.random())
