@@ -188,7 +188,7 @@ try:
     # W.makeTemp(90)
     # print(c)
     #make lightning at different intervals with different levels
-        W.makeRain(40)
+        W.makeRain(4)
         time.sleep(1)
         W.makeLightning(20,c[0],c[1],c[2])
         time.sleep(random.random())
