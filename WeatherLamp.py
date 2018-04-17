@@ -83,22 +83,24 @@ class Weather:
 
 
     #Round the rain value so we can map it to the amount of power going through the pump, therefore limiting rain made
+    def pumpHumidifierLevels(self,number):
+        b=Board()
+        for x in range (0,300):
+            GPIO.output(4,GPIO.HIGH)
+            time.sleep(number/100/3)
+            GPIO.output(4,GPIO.LOW)
+            time.sleep(1)
+
     def makeRain(self,rain):
         roundedRain = round(rain)
         dict = {0:0, 1:25, 2:50, 3:75, 4:100}
         rainVal = int((dict[roundedRain]))
-        p = GPIO.PWM(pin,60)
-        p.stop()
-        p.start(50)
-        # GPIO.PWM(7,rainVal)
+        pumpHumidifierLevels(rainVal)
     #Same as makeRain but with cloud percentage
     def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
-        p = GPIO.PWM(pin,60)
-        p.stop()
-        p.start(50)
-
+        pumpHumidifierLevels(cloutVal)
     def makeTemp(self, temp):
         #initialize board and setup LED array and max/min
         b=Board()

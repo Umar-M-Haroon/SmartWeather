@@ -11,6 +11,7 @@ __pycache__/
 CHEGG.py
 RFeeder.py
 RNG.py
+picture-color-analyzer.py
 # Distribution / packaging
 .Python
 env/
