@@ -48,6 +48,9 @@ class Weather:
         self.temp=t
         self.rain=r
         self.cloud=c
+        b = Board()
+        pins = {18:"OUT",2:"INPUT",4:"OUT",24:"OUT"}
+        b.setPins(pins)
     #Find the toal inches of rain
     def findTotalRain(self,array):
         total = 0
