@@ -96,7 +96,7 @@ class Weather:
         values = {0:0, 1:25, 2:50, 3:75, 4:100}
         print(values[int(roundedRain)])
         rainVal = int((values[roundedRain]))
-        pumpHumidifierLevels(rainVal)
+        self.pumpHumidifierLevels(rainVal)
     #Same as makeRain but with cloud percentage
     def makeClout(self,cloud):
         roundedClout = round(cloud)
