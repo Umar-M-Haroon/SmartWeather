@@ -88,7 +88,7 @@ class Weather:
             GPIO.output(4,GPIO.HIGH)
             time.sleep(number/25/3+.2)
             GPIO.output(4,GPIO.LOW)
-            time.sleep(1)
+            time.sleep(2)
 
     def makeRain(self,rain):
         roundedRain = round(rain)
