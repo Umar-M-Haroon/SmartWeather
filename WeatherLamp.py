@@ -182,9 +182,9 @@ b.setPins(pins)
 #         time.sleep(2)
 #     if buttonEnabled:
 def mainLoop():
-    while True:
+    # while True:
         W.makeRain(4)
-        time.sleep(1)
+        # time.sleep(1)
 def secondLoop(c):
     while True:
         W.makeLightning(4,c[0],c[1],c[2])
