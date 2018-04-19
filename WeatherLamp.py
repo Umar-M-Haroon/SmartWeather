@@ -194,7 +194,7 @@ if __name__ == '__main__':
         while True:
             t = W.makeTemp(40)
             Process(target=mainLoop).start()
-            # Process(target=secondLoop,args=t).start()
+            Process(target=secondLoop,args=t).start()
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
