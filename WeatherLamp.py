@@ -191,10 +191,10 @@ def secondLoop(c):
         time.sleep(random.random())
 if __name__ == '__main__':
     try:
+        Process(target=mainLoop).start()
+        Process(target=secondLoop,args=t).start()
         while True:
             t = W.makeTemp(40)
-            Process(target=mainLoop).start()
-            Process(target=secondLoop,args=t).start()
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
