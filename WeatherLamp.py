@@ -185,15 +185,15 @@ def mainLoop():
     # while True:
         W.makeRain(4)
         # time.sleep(1)
-def secondLoop(self,c,x):
+def secondLoop():
     while True:
-        W.makeLightning(4,c[0],c[1],c[2])
+        W.makeLightning(4,W.makeTemp(40)[0],W.makeTemp(40)[1],W.makeTemp(40)[2])
         time.sleep(random.random())
 if __name__ == '__main__':
     try:
         t = W.makeTemp(40)
         Process(target=mainLoop).start()
-        Process(target=secondLoop,args=t).start()
+        Process(target=secondLoop).start()
         while True:
             t = W.makeTemp(40)
     except KeyboardInterrupt:
