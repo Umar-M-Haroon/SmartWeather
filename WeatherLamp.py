@@ -87,7 +87,7 @@ class Weather:
 
         for x in range (0,300):
             GPIO.output(4,GPIO.HIGH)
-            time.sleep(2)
+            time.sleep(number/25/3+.2)
             GPIO.output(4,GPIO.LOW)
             time.sleep(2)
 
@@ -196,6 +196,7 @@ if __name__ == '__main__':
         Process(target=secondLoop).start()
         while True:
             t = W.makeTemp(40)
+            time.sleep(0.5)
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
