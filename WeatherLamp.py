@@ -183,7 +183,7 @@ b.setPins(pins)
 #     if buttonEnabled:
 def mainLoop():
     # while True:
-        W.makeRain(4)
+    W.makeRain(4)
         # time.sleep(1)
 def secondLoop():
     while True:
