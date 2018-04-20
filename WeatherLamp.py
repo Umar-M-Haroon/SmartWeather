@@ -185,7 +185,7 @@ def mainLoop():
     # while True:
         W.makeRain(4)
         # time.sleep(1)
-def secondLoop(c):
+def secondLoop(self,c):
     while True:
         W.makeLightning(4,c[0],c[1],c[2])
         time.sleep(random.random())
