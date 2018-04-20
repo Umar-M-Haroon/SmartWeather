@@ -196,7 +196,6 @@ if __name__ == '__main__':
         Process(target=secondLoop).start()
         while True:
             t = W.makeTemp(40)
-            time.sleep(0.5)
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
