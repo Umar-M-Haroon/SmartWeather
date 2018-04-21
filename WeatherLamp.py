@@ -83,12 +83,12 @@ class Weather:
 
 
     #Round the rain value so we can map it to the amount of power going through the pump, therefore limiting rain made
-    def pumpHumidifierLevels(self,number):
+    def pumpHumidifierLevels(self,number,pin):
 
         for x in range (0,300):
-            GPIO.output(4,GPIO.HIGH)
+            GPIO.output(pin,GPIO.HIGH)
             time.sleep(number/25/3+.2)
-            GPIO.output(4,GPIO.LOW)
+            GPIO.output(pin,GPIO.LOW)
             time.sleep(2)
 
     def makeRain(self,rain):
@@ -96,12 +96,12 @@ class Weather:
         values = {0:0, 1:25, 2:50, 3:75, 4:100}
 
         rainVal = int((values[roundedRain]))
-        self.pumpHumidifierLevels(rainVal)
+        self.pumpHumidifierLevels(rainVal,4)
     #Same as makeRain but with cloud percentage
     def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
-        pumpHumidifierLevels(cloutVal)
+        self.pumpHumidifierLevels(cloutVal,20)
     def makeTemp(self, temp):
         #initialize board and setup LED array and max/min
         b=Board()
@@ -190,11 +190,14 @@ def secondLoop():
         W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
         # time.sleep(random.random())
         time.sleep(2)
+def thirdLoop():
+    W.makeClout(100)
 if __name__ == '__main__':
     try:
         t = W.makeTemp(90)
         Process(target=mainLoop).start()
         Process(target=secondLoop).start()
+        Process(target=thirdLoop).start()
         while True:
             t = W.makeTemp(90)
     except KeyboardInterrupt:
