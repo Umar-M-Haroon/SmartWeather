@@ -196,10 +196,12 @@ if __name__ == '__main__':
     try:
         t = W.makeTemp(90)
         Process(target=mainLoop).start()
-        Process(target=secondLoop).start()
         Process(target=thirdLoop).start()
         while True:
             t = W.makeTemp(90)
+            W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
+            # time.sleep(random.random())
+            time.sleep(2) 
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
