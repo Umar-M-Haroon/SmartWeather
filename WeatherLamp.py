@@ -193,15 +193,35 @@ def secondLoop():
 def thirdLoop():
     W.makeClout(100)
 if __name__ == '__main__':
+    # while True:
+    # buttonData = GPIO.input(2)
+    # buttonEnabled = False
+    # while buttonData:
+    #     if buttonEnabled:
+    #         buttonEnabled = False
+    #     else:
+    #         buttonEnabled = True
+    #     time.sleep(2)
+    # if buttonEnabled:
     try:
-        t = W.makeTemp(90)
         Process(target=mainLoop).start()
         Process(target=thirdLoop).start()
-        while True:
-            t = W.makeTemp(90)
-            W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
-            # time.sleep(random.random())
-            time.sleep(2) 
+        t = W.makeTemp(90)
+    while True:
+        buttonData = GPIO.input(2)
+        buttonEnabled = False
+        while buttonData:
+            if buttonEnabled:
+                buttonEnabled = False
+            else:
+                buttonEnabled = True
+            time.sleep(2)
+        if buttonEnabled:
+            while True:
+                t = W.makeTemp(90)
+                W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
+                # time.sleep(random.random())
+                time.sleep(2) 
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
