@@ -208,20 +208,18 @@ if __name__ == '__main__':
         Process(target=thirdLoop).start()
         t = W.makeTemp(90)
         while True:
-            buttonData = GPIO.input(2)
-            buttonEnabled = False
-            while buttonData:
-                if buttonEnabled:
-                    buttonEnabled = False
-                else:
-                    buttonEnabled = True
-                time.sleep(2)
-            if buttonEnabled:
-                while True:
+            time.sleep(0.1)
+            x = GPIO.input(2)
+            e = False
+            if x is 1:
+                e = True
+            if e is True:
+                for i in range(0,300):
                     t = W.makeTemp(90)
-                    W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
-                    # time.sleep(random.random())
-                    time.sleep(2) 
+                    for j in range(0,300):
+                        W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
+                        time.sleep(random.random())
+                    time.sleep(1) 
     except KeyboardInterrupt:
         print("INTERRUPTED")
     finally:
