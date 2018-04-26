@@ -12,7 +12,7 @@ class Board:
     LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
     LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
     LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
-    LED_BRIGHTNESS = 100     # Set to 0 for darkest and 255 for brightest
+    LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
     LED_INVERT     = False   # True to invert the signal (when using NPN transistor$
     LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
     LED_STRIP      = ws.WS2811_STRIP_GRB   # Strip type and colour ordering
@@ -204,8 +204,6 @@ if __name__ == '__main__':
     #     time.sleep(2)
     # if buttonEnabled:
     try:
-        Process(target=mainLoop).start()
-        Process(target=thirdLoop).start()
         t = W.makeTemp(90)
         while True:
             time.sleep(0.1)
@@ -214,6 +212,8 @@ if __name__ == '__main__':
             if x is 1:
                 e = True
             if e is True:
+                Process(target=mainLoop).start()
+                Process(target=thirdLoop).start()
                 for i in range(0,300):
                     t = W.makeTemp(90)
                     for j in range(0,300):
