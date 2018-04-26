@@ -101,7 +101,7 @@ class Weather:
     def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
-        self.pumpHumidifierLevels(cloutVal,20)
+        self.pumpHumidifierLevels(cloutVal,90)
     def makeTemp(self, temp):
         #initialize board and setup LED array and max/min
         b=Board()
