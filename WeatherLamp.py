@@ -87,7 +87,7 @@ class Weather:
 
         for x in range (0,300):
             GPIO.output(pin,GPIO.HIGH)
-            time.sleep(4*(number/25/3+.2))
+            time.sleep(6*(number/25/3+.2))
             GPIO.output(pin,GPIO.LOW)
             time.sleep(2)
 
