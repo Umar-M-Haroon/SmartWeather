@@ -120,47 +120,7 @@ class Weather:
         green = 255-red-blue
         b.setColor(red,green,blue,LightningLEDs)
         return [red,green,blue]
-class Data:
-    def getData(self):
-        #always run until it opens (This is to check its connected to the internet)
-        key = "cf22c6d3079412ef13ed81f039297bc8"
-        url = "http://api.openweathermap.org/data/2.5/forecast?q=Boulder&APPID="+key+"&units=imperial"+"&cnt=4"
-
-        success = False
-        while (success==False):
-            try:
-                response = urllib.urlopen(url)
-                success=True
-            except:
-                time.sleep(0.5)
-                success=False
-
-        try:
-            dataResponse = json.loads(response.read())
-        except:
-            dataResponse=""
-        return dataResponse
-
-    def filterData(self,d):
-        arr = []
-        #Filter out unnecessary data like coordinates
-        for x in data["list"]:
-            temp = x["main"]["temp"]
-            try:
-                rain = x["rain"]["3h"]
-            except:
-                rain=0
-            cloud = x["clouds"]["all"]
-            r = Weather(temp,rain,cloud)
-            arr.append(r)
-        return arr
-#data request and initialize Weather data
-d = Data()
-data = d.getData()
-while data is "":
-    data=d.getData()
-#initialize Weather class after filtering data so we can use weather functions
-x = d.filterData(data)
+#FIX BELOW
 W = x[0]
 W.cloud=W.findHighestCloudPercentage(x)
 W.rain=W.findTotalRain(x)
@@ -171,38 +131,15 @@ b=Board()
 pins = {18:"OUT",2:"INPUT",4:"OUT",24:"OUT",20:"OUT"}
 b.setPins(pins)
 
-# while True:
-#     buttonData = GPIO.input(2)
-#     buttonEnabled = False
-#     while buttonData:
-#         if buttonEnabled:
-#             buttonEnabled = False
-#         else:
-#             buttonEnabled = True
-#         time.sleep(2)
-#     if buttonEnabled:
 def mainLoop():
-    # while True:
     W.makeRain(4)
-        # time.sleep(1)
 def secondLoop():
     while True:
         W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
-        # time.sleep(random.random())
-        time.sleep(2)
+        time.sleep(random.random())
 def thirdLoop():
     W.makeClout(100)
 if __name__ == '__main__':
-    # while True:
-    # buttonData = GPIO.input(2)
-    # buttonEnabled = False
-    # while buttonData:
-    #     if buttonEnabled:
-    #         buttonEnabled = False
-    #     else:
-    #         buttonEnabled = True
-    #     time.sleep(2)
-    # if buttonEnabled:
     try:
         while True:
             time.sleep(0.1)
