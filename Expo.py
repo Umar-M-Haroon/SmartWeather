@@ -84,7 +84,6 @@ class Weather:
 
     #Round the rain value so we can map it to the amount of power going through the pump, therefore limiting rain made
     def pumpHumidifierLevels(self,number,pin):
-
         for x in range (0,300):
             GPIO.output(pin,GPIO.HIGH)
             time.sleep(20*(number/25/3+.2))
@@ -94,7 +93,6 @@ class Weather:
     def makeRain(self,rain):
         roundedRain = round(rain)
         values = {0:0, 1:25, 2:50, 3:75, 4:100}
-
         rainVal = int((values[roundedRain]))
         self.pumpHumidifierLevels(rainVal,4)
     #Same as makeRain but with cloud percentage
