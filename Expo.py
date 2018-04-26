@@ -119,42 +119,40 @@ class Weather:
         b.setColor(red,green,blue,LightningLEDs)
         return [red,green,blue]
 #FIX BELOW
-W = x[0]
-W.cloud=W.findHighestCloudPercentage(x)
-W.rain=W.findTotalRain(x)
-
-
-
 b=Board()
 pins = {18:"OUT",2:"INPUT",4:"OUT",24:"OUT",20:"OUT"}
 b.setPins(pins)
 
-def mainLoop():
-    W.makeRain(4)
-def secondLoop():
+
+x=[Weather(20,0.5,25),Weather(40,1,50),Weather(60,1.5,75),Weather(90,4,100)]
+
+
+def mainLoop(self,amt):
+    W.makeRain(amt)
+
+def secondLoop(self,amt):
+    W.makeClout(amt)
+try:
     while True:
-        W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
-        time.sleep(random.random())
-def thirdLoop():
-    W.makeClout(100)
-if __name__ == '__main__':
-    try:
-        while True:
-            time.sleep(0.1)
-            x = GPIO.input(2)
-            e = False
-            if x is 1:
-                e = True
-            if e is True:
-                Process(target=mainLoop).start()
-                Process(target=thirdLoop).start()
-                for i in range(0,300):
-                    t = W.makeTemp(90)
-                    for j in range(0,300):
-                        W.makeLightning(4,W.makeTemp(90)[0],W.makeTemp(90)[1],W.makeTemp(90)[2])
+        time.sleep(0.1)
+        x = GPIO.input(2)
+        e = False
+        if x is 1:
+            e = True
+        if e is True:
+            Process(target=mainLoop,args=()).start()
+            Process(target=secondLoop,args=().start()
+            #Iterate through the four here?
+            for p in range(0,3):
+                WIterator = x[p]
+
+                for i in range(0,15):
+                    t = WIterator.makeTemp(x[p].temp)
+                    for j in range(0,20):
+                        W.makeLightning(4,t[0],t[1],t[2])
                         time.sleep(random.random())
                     time.sleep(1) 
-    except KeyboardInterrupt:
-        print("INTERRUPTED")
-    finally:
-        GPIO.cleanup()
+except KeyboardInterrupt:
+    print("INTERRUPTED")
+finally:
+    GPIO.cleanup()
