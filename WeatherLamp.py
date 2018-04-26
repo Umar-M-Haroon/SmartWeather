@@ -87,7 +87,7 @@ class Weather:
 
         for x in range (0,300):
             GPIO.output(pin,GPIO.HIGH)
-            time.sleep(10*(number/25/3+.2))
+            time.sleep(20*(number/25/3+.2))
             GPIO.output(pin,GPIO.LOW)
             time.sleep(2)
 
@@ -101,7 +101,7 @@ class Weather:
     def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
-        self.pumpHumidifierLevels(cloutVal,90)
+        self.pumpHumidifierLevels(cloutVal,20)
     def makeTemp(self, temp):
         #initialize board and setup LED array and max/min
         b=Board()
