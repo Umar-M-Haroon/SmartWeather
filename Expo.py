@@ -148,7 +148,7 @@ try:
                 for index in range(0,15):
                     temp = WIterator.makeTemp(x[k].temp)
                     for j in range(0,20):
-                        W.makeLightning(4,t[0],t[1],t[2])
+                        W.makeLightning(4,temp[0],temp[1],temp[2])
                         time.sleep(random.random())
                     time.sleep(1) 
 except KeyboardInterrupt:
