@@ -140,14 +140,14 @@ try:
         if x is 1:
             e = True
         if e:
-            for k in range(0,3):
+            for k in range(4):
                 WIterator = x[k]
                 Process(target=mainLoop,args=(WIterator.rain)).start()
                 Process(target=secondLoop,args=(WIterator.cloud).start()
                 
-                for index in range(0,15):
+                for index in range(15):
                     temp = WIterator.makeTemp(x[k].temp)
-                    for j in range(0,20):
+                    for j in range(20):
                         W.makeLightning(4,temp[0],temp[1],temp[2])
                         time.sleep(random.random())
                     time.sleep(1) 
