@@ -141,12 +141,12 @@ try:
             e = True
         if e:
             for k in range(4):
-                WIterator = Ws[k]
-                Process(target=mainLoop,args=(WIterator.rain)).start()
-                Process(target=secondLoop,args=(WIterator.cloud)).start()
+                Wi = Ws[k]
+                Process(target=mainLoop,args=(Wi.rain)).start()
+                Process(target=secondLoop,args=(Wi.cloud)).start()
                 
                 for _ in range(15):
-                    temp = WIterator.makeTemp(x[k].temp)
+                    temp = Wi.makeTemp(x[k].temp)
                     for j in range(20):
                         W.makeLightning(4,temp[0],temp[1],temp[2])
                         time.sleep(random.random())
