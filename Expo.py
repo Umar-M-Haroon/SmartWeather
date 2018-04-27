@@ -148,7 +148,7 @@ try:
                 Process(target=secondLoop,args=(Wi.cloud,)).start()
                 
                 for _ in range(15):
-                    temp = Wi.makeTemp(x[k].temp)
+                    temp = Wi.makeTemp(Wi.temp)
                     for j in range(20):
                         W.makeLightning(4,temp[0],temp[1],temp[2])
                         time.sleep(random.random())
