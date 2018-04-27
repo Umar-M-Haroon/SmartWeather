@@ -127,10 +127,10 @@ b.setPins(pins)
 Ws=[Weather(20,1,25),Weather(40,2,50),Weather(60,3,75),Weather(90,4,100)]
 
 
-def mainLoop(self,amt):
+def mainLoop(amt):
     W.makeRain(amt)
 
-def secondLoop(self,amt):
+def secondLoop(amt):
     W.makeClout(amt)
 try:
     while True:
