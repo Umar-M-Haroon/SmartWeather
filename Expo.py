@@ -140,10 +140,10 @@ try:
         if x is 1:
             e = True
         if e is True:
-            Process(target=mainLoop,args=()).start()
-            Process(target=secondLoop,args=().start()
             for p in range(0,3):
                 WIterator = x[p]
+                Process(target=mainLoop,args=(WIterator.rain)).start()
+                Process(target=secondLoop,args=(WIterator.cloud).start()
 
                 for i in range(0,15):
                     t = WIterator.makeTemp(x[p].temp)
