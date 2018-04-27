@@ -140,11 +140,11 @@ try:
         if x is 1:
             e = True
         if e:
-            for (k in range(0,3)):
+            for k in range(0,3):
                 WIterator = x[k]
                 Process(target=mainLoop,args=(WIterator.rain)).start()
                 Process(target=secondLoop,args=(WIterator.cloud).start()
-
+                print("YAY")
                 for i in range(0,15):
                     t = WIterator.makeTemp(x[k].temp)
                     for j in range(0,20):
