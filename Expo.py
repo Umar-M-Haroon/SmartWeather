@@ -146,7 +146,7 @@ try:
                 Process(target=secondLoop,args=(WIterator.cloud).start()
                 
                 for index in range(0,15):
-                    t = WIterator.makeTemp(x[k].temp)
+                    temp = WIterator.makeTemp(x[k].temp)
                     for j in range(0,20):
                         W.makeLightning(4,t[0],t[1],t[2])
                         time.sleep(random.random())
