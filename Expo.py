@@ -90,13 +90,13 @@ class Weather:
             GPIO.output(pin,GPIO.LOW)
             time.sleep(2)
 
-    def makeRain(rain):
+    def makeRain(self,rain):
         roundedRain = round(rain)
         values = {0:0, 1:25, 2:50, 3:75, 4:100}
         rainVal = int((values[roundedRain]))
         self.pumpHumidifierLevels(rainVal,4)
     #Same as makeRain but with cloud percentage
-    def makeClout(cloud):
+    def makeClout(self,cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
         self.pumpHumidifierLevels(cloutVal,20)
@@ -128,10 +128,12 @@ Ws=[Weather(20,1,25),Weather(40,2,50),Weather(60,3,75),Weather(90,4,100)]
 
 
 def mainLoop(amt):
-    Weather.makeRain(amt)
+    W = Weather(0,amt,0)
+    W.makeRain(amt)
 
 def secondLoop(amt):
-    Weather.makeClout(amt)
+    W = Weather(0,0,amt)
+    W.makeClout(amt)
 try:
     while True:
         time.sleep(0.1)
