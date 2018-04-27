@@ -90,13 +90,13 @@ class Weather:
             GPIO.output(pin,GPIO.LOW)
             time.sleep(2)
 
-    def makeRain(self,rain):
+    def makeRain(rain):
         roundedRain = round(rain)
         values = {0:0, 1:25, 2:50, 3:75, 4:100}
         rainVal = int((values[roundedRain]))
         self.pumpHumidifierLevels(rainVal,4)
     #Same as makeRain but with cloud percentage
-    def makeClout(self,cloud):
+    def makeClout(cloud):
         roundedClout = round(cloud)
         cloutVal = int(roundedClout)
         self.pumpHumidifierLevels(cloutVal,20)
