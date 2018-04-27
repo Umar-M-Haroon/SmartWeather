@@ -142,8 +142,8 @@ try:
         if e:
             for k in range(4):
                 Wi = Ws[k]
-                Process(target=mainLoop,args=(Wi.rain)).start()
-                Process(target=secondLoop,args=(Wi.cloud)).start()
+                Process(target=mainLoop,args=(Wi.rain,)).start()
+                Process(target=secondLoop,args=(Wi.cloud,)).start()
                 
                 for _ in range(15):
                     temp = Wi.makeTemp(x[k].temp)
