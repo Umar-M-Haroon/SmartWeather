@@ -142,7 +142,6 @@ try:
         if e is True:
             Process(target=mainLoop,args=()).start()
             Process(target=secondLoop,args=().start()
-            #Iterate through the four here?
             for p in range(0,3):
                 WIterator = x[p]
 
