@@ -124,7 +124,7 @@ pins = {18:"OUT",2:"INPUT",4:"OUT",24:"OUT",20:"OUT"}
 b.setPins(pins)
 
 
-x=[Weather(20,0.5,25),Weather(40,1,50),Weather(60,1.5,75),Weather(90,4,100)]
+Ws=[Weather(20,0.5,25),Weather(40,1,50),Weather(60,1.5,75),Weather(90,4,100)]
 
 
 def mainLoop(self,amt):
@@ -141,7 +141,7 @@ try:
             e = True
         if e:
             for k in range(4):
-                WIterator = x[k]
+                WIterator = Ws[k]
                 Process(target=mainLoop,args=(WIterator.rain)).start()
                 Process(target=secondLoop,args=(WIterator.cloud)).start()
                 
