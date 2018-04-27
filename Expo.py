@@ -144,8 +144,8 @@ try:
                 WIterator = x[k]
                 Process(target=mainLoop,args=(WIterator.rain)).start()
                 Process(target=secondLoop,args=(WIterator.cloud).start()
-                print("YAY")
-                for i in range(0,15):
+                
+                for index in range(0,15):
                     t = WIterator.makeTemp(x[k].temp)
                     for j in range(0,20):
                         W.makeLightning(4,t[0],t[1],t[2])
