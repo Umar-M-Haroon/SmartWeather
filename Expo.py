@@ -140,6 +140,7 @@ try:
         if x is 1:
             e = True
         if e is True:
+            # for k in range(0,3):
             for k in range(0,3):
                 WIterator = x[k]
                 Process(target=mainLoop,args=(WIterator.rain)).start()
