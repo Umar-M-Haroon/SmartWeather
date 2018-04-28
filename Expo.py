@@ -142,6 +142,7 @@ try:
         if x is 1:
             e = True
         if e is True:
+            time.sleep(0.1)
             for k in range(4):
                 Wi = Ws[k]
                 Process(target=mainLoop,args=(Wi.rain,)).start()
