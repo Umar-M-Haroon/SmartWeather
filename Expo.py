@@ -154,8 +154,12 @@ try:
                     Wi.makeLightning(4,temp[0],temp[1],temp[2])
                     time.sleep(random.random())
                 time.sleep(1) 
-        Process(target=mainLoop,args=(0,)).terminate()
-        Process(target=secondLoop,args=(0,)).terminate()
+        c = Process(target=mainLoop,args=(0,))
+        c.start()
+        pp = Process(target=secondLoop,args=(0,))
+        pp.start()
+        c.terminate()
+        pp.terminate()
 except KeyboardInterrupt:
     print("INTERRUPTED")
 finally:
