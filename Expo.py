@@ -136,33 +136,33 @@ def mainLoop(amt):
 def secondLoop(amt):
     W = Weather(0,0,amt)
     W.makeClout(amt)
-if __init__ == "__main__":
-    try:
-        while True:
-            time.sleep(0.1)
-            x = GPIO.input(2)
-            e = False
-            if x is 1:
-                e = True
-            if e:
-                for k in range(4):
-                    Wi = Ws[k]
-                    Process(target=mainLoop,args=(Wi.rain,)).start()
-                    Process(target=secondLoop,args=(Wi.cloud,)).start()
+
+try:
+    while True:
+        time.sleep(0.1)
+        x = GPIO.input(2)
+        e = False
+        if x is 1:
+           e = True
+        if e:
+            for k in range(4):
+                Wi = Ws[k]
+                Process(target=mainLoop,args=(Wi.rain,)).start()
+                Process(target=secondLoop,args=(Wi.cloud,)).start()
                 
           
-                    temp = Wi.makeTemp(Wi.temp)
-                    for j in range(3):
-                        Wi.makeLightning(4,temp[0],temp[1],temp[2])
-                        time.sleep(random.random())
-                    time.sleep(1) 
-            c = Process(target=mainLoop,args=(0,))
-            c.start()
-            pp = Process(target=secondLoop,args=(0,))
-            pp.start()
-            c.terminate()
-            pp.terminate()
-    except KeyboardInterrupt:
-        print("INTERRUPTED")
-    finally:
-        GPIO.cleanup()
+                temp = Wi.makeTemp(Wi.temp)
+                for j in range(3):
+                    Wi.makeLightning(4,temp[0],temp[1],temp[2])
+                    time.sleep(random.random())
+                time.sleep(1) 
+        c = Process(target=mainLoop,args=(0,))
+        c.start()
+        pp = Process(target=secondLoop,args=(0,))
+        pp.start()
+        c.terminate()
+        pp.terminate()
+except KeyboardInterrupt:
+    print("INTERRUPTED")
+finally:
+    GPIO.cleanup()
