@@ -141,7 +141,7 @@ try:
         e = False
         if x is 1:
             e = True
-        if e:
+        if e is True:
             for k in range(4):
                 Wi = Ws[k]
                 Process(target=mainLoop,args=(Wi.rain,)).start()
