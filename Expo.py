@@ -124,7 +124,7 @@ pins = {18:"OUT",2:"INPUT",4:"OUT",24:"OUT",20:"OUT"}
 b.setPins(pins)
 
 
-Ws=[Weather(20,1,25),Weather(40,2,50),Weather(60,3,75),Weather(90,4,100)]
+Ws=[Weather(20,0,0),Weather(40,1,20),Weather(60,3,75),Weather(90,4,100)]
 
 
 def mainLoop(amt):
