@@ -86,7 +86,7 @@ class Weather:
     def pumpHumidifierLevels(self,number,pin):
         for x in range (0,300):
             GPIO.output(pin,GPIO.HIGH)
-            time.sleep(20*(number/25/3+.2))
+            time.sleep(40*(number/25/3+.2))
             GPIO.output(pin,GPIO.LOW)
             time.sleep(2)
 
@@ -104,7 +104,7 @@ class Weather:
         #initialize board and setup LED array and max/min
         b=Board()
         LightningLEDs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-        minimum = 40.0
+        minimum = 20.0
         maximum = 90.0
         #edge case
         if temp < minimum:
