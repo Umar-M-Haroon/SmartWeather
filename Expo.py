@@ -149,7 +149,7 @@ try:
                 
           
                 temp = Wi.makeTemp(Wi.temp)
-                for j in range(20):
+                for j in range(3):
                     Wi.makeLightning(4,temp[0],temp[1],temp[2])
                     time.sleep(random.random())
                 time.sleep(1) 
