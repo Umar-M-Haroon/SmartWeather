@@ -151,7 +151,7 @@ try:
                 for _ in range(15):
                     temp = Wi.makeTemp(Wi.temp)
                     for j in range(20):
-                        Wi.makeLightning(4,temp[0],temp[1],temp[2])
+                        Wi.makeLightning(4,temp[0],temp[1],temp[2],temp[3])
                         time.sleep(random.random())
                     time.sleep(1) 
 except KeyboardInterrupt:
