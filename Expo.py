@@ -136,7 +136,7 @@ def mainLoop(amt):
 def secondLoop(amt):
     W = Weather(0,0,amt)
     W.makeClout(amt)
-if __init__ is "__main__"
+if __init__ is "__main__":
     try:
         while True:
             time.sleep(0.1)
