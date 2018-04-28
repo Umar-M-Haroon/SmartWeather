@@ -84,7 +84,7 @@ class Weather:
 
     #Round the rain value so we can map it to the amount of power going through the pump, therefore limiting rain made
     def pumpHumidifierLevels(self,number,pin):
-        if number is not 0:
+        if number > 0:
             for x in range (0,300):
                 GPIO.output(pin,GPIO.HIGH)
                 time.sleep(40*(number/25/3+.2))
